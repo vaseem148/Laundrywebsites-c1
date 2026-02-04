@@ -74,7 +74,7 @@ const TripleImageConfettiEntrance = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-xl">
-            Step Inside Divine Laundry ✨
+             Divine Laundry ✨
           </h1>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-300 tracking-wide">
             Clean • Care • Comfort
