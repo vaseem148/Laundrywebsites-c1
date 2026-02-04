@@ -3,78 +3,89 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Phone,
-  Shirt,
   Sparkles,
-  Footprints,
+  Shirt,
   Wind,
+  Footprints,
   Home,
 } from "lucide-react";
 
 /* ------------------ Animations ------------------ */
+
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.22, delayChildren: 0.35 },
   },
 };
 
-const itemUp = {
-  hidden: { opacity: 0, y: 50 },
+const brandAnim = {
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: "easeOut" },
+    transition: { duration: 1 },
   },
 };
 
-const floatSlow = {
+const headlineAnim = {
+  hidden: { opacity: 0, y: 60 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.2, ease: "easeOut" },
+  },
+};
+
+const floatText = {
   animate: {
-    y: [0, -18, 0],
-    rotate: [0, 6, 0],
-    transition: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+    y: [0, -10, 0],
+  },
+  transition: {
+    duration: 6,
+    repeat: Infinity,
+    ease: "easeInOut",
   },
 };
 
-/* ------------------ Component ------------------ */
 export default function HeroSection() {
-  const bgIcons = [Shirt, Sparkles, Footprints, Wind, Home];
+  const icons = [Shirt, Wind, Footprints, Home, Sparkles];
 
   const floatingIcons = useMemo(
     () =>
-      Array.from({ length: 28 }).map((_, i) => ({
+      Array.from({ length: 20 }).map((_, i) => ({
         id: i,
-        Icon: bgIcons[i % bgIcons.length],
-        left: `${(i * 37) % 100}%`,
-        top: `${(i * 53) % 100}%`,
-        size: 42 + (i % 28),
-        duration: 18 + (i % 10),
+        Icon: icons[i % icons.length],
+        left: `${(i * 27) % 100}%`,
+        top: `${(i * 43) % 100}%`,
+        size: 30 + (i % 22),
+        duration: 16 + (i % 14),
       })),
-    [bgIcons]
+    []
   );
 
   return (
     <motion.section
-    id="home"
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative min-h-screen min-h-[100svh] bg-[#241C3A] flex flex-col items-center justify-center text-center px-4 sm:px-6 py-24 overflow-hidden"
+      className="relative min-h-[100svh] bg-[#241C3A] px-6 lg:px-20 py-28 overflow-hidden"
     >
-      {/* ---------- DARK OVERLAY ---------- */}
-      <div className="absolute inset-0 bg-black/20 z-0" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/35 z-0" />
 
-      {/* ---------- FLOATING BACKGROUND ICONS ---------- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Background Floating Icons */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         {floatingIcons.map((item) => (
           <motion.div
             key={item.id}
-            className="absolute text-white/15"
+            className="absolute text-white/10"
             style={{ left: item.left, top: item.top }}
             animate={{
-              y: [0, -45, 0],
+              y: [0, -50, 0],
               x: [0, 25, -25, 0],
-              rotate: [0, 30, -30, 0],
+              rotate: [0, 20, -20, 0],
             }}
             transition={{
               duration: item.duration,
@@ -87,110 +98,105 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* ---------- SOFT GLOW ---------- */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-purple-500/25 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-indigo-500/25 rounded-full blur-[150px]" />
+      {/* Glow */}
+      <div className="absolute -top-40 -left-40 w-[650px] h-[650px] bg-purple-500/35 rounded-full blur-[200px]" />
+      <div className="absolute bottom-0 right-0 w-[520px] h-[520px] bg-indigo-500/35 rounded-full blur-[200px]" />
+
+      {/* GRID */}
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+        {/* LEFT */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+
+          {/* BRAND */}
+          <motion.h1
+            variants={brandAnim}
+            className="
+              mb-6 text-[28px] sm:text-[36px] lg:text-[44px]
+              tracking-[0.45em] font-extrabold uppercase
+              bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300
+              bg-[length:200%_200%]
+              animate-[gradient_6s_ease_infinite]
+              bg-clip-text text-transparent
+            "
+          >
+            DIVINE LAUNDRY
+          </motion.h1>
+
+          {/* HEADLINE */}
+          <motion.h2
+            variants={headlineAnim}
+            {...floatText}
+            className="
+              text-[42px] sm:text-6xl lg:text-[82px]
+              font-black leading-[1.05]
+              text-white mb-8
+              drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]
+            "
+          >
+            Premium Care
+            <br />
+            For Every Fabric
+          </motion.h2>
+
+          {/* DESC */}
+          <motion.p
+            variants={headlineAnim}
+            className="max-w-xl text-white/85 text-sm sm:text-lg mb-12"
+          >
+            Luxury laundry, dry cleaning & ironing services with pickup & drop.
+            Crafted care by Divine Laundry.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            variants={headlineAnim}
+            className="flex flex-col sm:flex-row gap-5"
+          >
+            <button className="bg-[#6A5ACD] px-10 py-5 rounded-3xl font-black text-lg text-white shadow-[0_20px_60px_rgba(106,90,205,0.6)] flex items-center gap-3 hover:scale-105 transition">
+              Order Now <ArrowRight />
+            </button>
+
+            <button className="border border-white/40 bg-white/10 backdrop-blur-xl px-10 py-5 rounded-3xl font-black text-lg text-white flex items-center gap-3 hover:bg-white/20 transition">
+              <Phone /> Call Now
+            </button>
+          </motion.div>
+        </div>
+
+        {/* RIGHT – IMAGE */}
+        <motion.div
+          className="relative flex justify-center lg:justify-end"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 1.5, -1.5, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-tr from-purple-500/50 to-indigo-500/50 blur-[180px] rounded-full"
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          />
+
+          <img
+  src="/inside4.jpg"
+  alt="Laundry Service"
+  className="
+    relative z-10
+    w-[300px] sm:w-[380px] lg:w-[480px]
+    rounded-[40px]
+    shadow-[0_60px_160px_rgba(0,0,0,0.7)]
+    lg:-mr-10
+  "
+/>
+
+        </motion.div>
       </div>
-
-      {/* ---------- FLOATING ACCENT ICONS ---------- */}
-      <motion.div
-        variants={floatSlow}
-        animate="animate"
-        className="absolute top-24 right-[10%] hidden md:block bg-white/10 backdrop-blur-xl p-5 rounded-3xl rotate-12 z-10"
-      >
-        <Shirt size={42} className="text-white" />
-      </motion.div>
-
-      <motion.div
-        variants={floatSlow}
-        animate="animate"
-        className="absolute bottom-40 left-[6%] hidden md:block bg-white/10 backdrop-blur-xl p-5 rounded-3xl -rotate-12 z-10"
-      >
-        <Sparkles size={42} className="text-white" />
-      </motion.div>
-
-      {/* ---------- OFFER BADGE ---------- */}
-      <motion.div
-        variants={itemUp}
-        className="z-10 inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full mb-10 shadow-xl"
-      >
-        <Sparkles className="text-[#241C3A] w-4 h-4" />
-        <p className="text-[11px] font-black uppercase tracking-widest text-black">
-          First Order — <span className="text-[#241C3A]">₹7 / KG</span>
-        </p>
-        <span className="bg-[#241C3A] text-[10px] font-black px-2 py-0.5 rounded-full text-white">
-          20% OFF
-        </span>
-      </motion.div>
-
-      {/* ---------- HEADING ---------- */}
-      <motion.h1
-        variants={itemUp}
-        className="z-10 text-[42px] sm:text-6xl md:text-7xl lg:text-[96px] font-black leading-[0.95] tracking-tight mb-8 text-white"
-        style={{ textShadow: "0 6px 30px rgba(0,0,0,0.8)" }}
-      >
-        Clean Clothes.
-        <br />
-        Happy Customers.
-        <br />
-        Every Time.
-      </motion.h1>
-
-      {/* ---------- DESCRIPTION ---------- */}
-      <motion.p
-        variants={itemUp}
-        className="z-10 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl text-white mb-12 leading-relaxed px-2"
-        style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}
-      >
-        Professional laundry, dry cleaning & ironing services with pickup & drop.
-        Premium fabric care with transparent pricing.
-      </motion.p>
-
-      {/* ---------- CTA ---------- */}
-      <motion.div
-        variants={itemUp}
-        className="z-10 flex flex-col sm:flex-row gap-5 mb-20 w-full sm:w-auto"
-      >
-        <motion.button
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-[#6A5ACD] text-white px-8 sm:px-10 py-5 rounded-3xl font-black text-base sm:text-lg md:text-xl flex items-center justify-center gap-3 shadow-2xl w-full sm:w-auto"
-        >
-          Order Now <ArrowRight />
-        </motion.button>
-
-        <motion.button
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.95 }}
-          className="border border-white bg-white/10 backdrop-blur-xl px-8 sm:px-10 py-5 rounded-3xl font-black text-base sm:text-lg md:text-xl text-white flex items-center justify-center gap-3 w-full sm:w-auto"
-        >
-          <Phone /> Call Now
-        </motion.button>
-      </motion.div>
-
-      {/* ---------- SERVICES ---------- */}
-      <motion.div
-        variants={itemUp}
-        className="z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 max-w-6xl w-full"
-      >
-        {[
-          { name: "Laundry", icon: <Shirt /> },
-          { name: "Dry Cleaning", icon: <Sparkles /> },
-          { name: "Shoe Cleaning", icon: <Footprints /> },
-          { name: "Steam Ironing", icon: <Wind /> },
-          { name: "Home Cleaning", icon: <Home /> },
-        ].map((item, i) => (
-          <div key={i} className="flex flex-col items-center">
-            <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/10 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] flex items-center justify-center text-white mb-3 shadow-xl">
-              {React.cloneElement(item.icon, { size: 28 })}
-            </div>
-            <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white text-center">
-              {item.name}
-            </p>
-          </div>
-        ))}
-      </motion.div>
     </motion.section>
   );
 }
