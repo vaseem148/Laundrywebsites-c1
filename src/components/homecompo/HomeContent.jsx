@@ -91,7 +91,7 @@ export default function HeroSection() {
       {/* CONTENT */}
       <div className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center text-center px-6">
 
-        {/* BRAND */}
+        {/* BRAND (EMPTY AS BEFORE) */}
         <motion.h1
           variants={fadeUp}
           className="
@@ -102,7 +102,6 @@ export default function HeroSection() {
             bg-clip-text text-transparent
           "
         >
-          
         </motion.h1>
 
         {/* HEADLINE */}
@@ -113,21 +112,30 @@ export default function HeroSection() {
           className="
             text-[38px] sm:text-6xl lg:text-[86px]
             font-black leading-[1.05]
-            text-white mb-6
+            text-white mb-2
             drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)]
           "
         >
-          Freshness You Can Feel.
+          <h1 className="text-yellow-400">Divine Laundry</h1>
+          {/* 📍 LOCATION (NEWLY ADDED) */}
+        <motion.p
+          variants={fadeUp}
+          className="pt-5
+            mb-10
+            text-sm sm:text-base lg:text-xl
+            font-semibold tracking-wide
+            text-white/80
+          "
+        >
+          (Now at Vinobanagar ,East Tambaram, Chennai – 600059)
+        </motion.p>
 
+          Service You Can Trust
           <br />
-          
-Service You Can Trust.
-        <br />
-        <h1 className="text-yellow-400">Divine Laundry.</h1>
+          Freshness You Can Feel
         </motion.h2>
 
-     
-
+        
         {/* CTA */}
         <motion.div
           variants={fadeUp}

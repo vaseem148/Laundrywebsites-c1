@@ -76,9 +76,10 @@ const TripleImageConfettiEntrance = () => {
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-xl">
              Divine Laundry ✨
           </h1>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-300 tracking-wide">
-            Clean • Care • Comfort
-          </p>
+         <p className="mt-3 sm:mt-4 text-2xl sm:text-xl lg:text-2xl text-gray-300 tracking-wide">
+  (Now at Vinobanagar, East Tambaram, Chennai – 600059)
+</p>
+
         </motion.div>
 
         {/* IMAGES */}

@@ -1,10 +1,13 @@
 import React from "react";
-import { MessageCircle, Phone, MapPin, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 const BookingSection = () => {
   return (
-    <section id="booking" className="min-h-screen min-h-[100svh] bg-white py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+    <section
+      id="booking"
+      className="min-h-screen min-h-[100svh] bg-white py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24"
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
         {/* LEFT — Booking Form */}
         <div className="bg-white border border-slate-100 rounded-[32px] sm:rounded-[42px] p-6 sm:p-8 md:p-12 shadow-[0_40px_100px_-30px_rgba(124,43,217,0.15)]">
           <span className="inline-block bg-purple-100 text-purple-700 text-xs font-semibold px-5 py-2 rounded-full uppercase tracking-wider mb-6">
@@ -90,76 +93,25 @@ const BookingSection = () => {
           </form>
         </div>
 
-        {/* RIGHT — Contact Options */}
-        <div className="lg:pt-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-            Prefer to Call or Chat?
-          </h2>
+        {/* RIGHT — Image Section */}
+        <div className="relative w-full h-[420px] sm:h-[520px] lg:h-[640px] rounded-[32px] sm:rounded-[42px] overflow-hidden shadow-[0_40px_120px_-40px_rgba(0,0,0,0.25)]">
+          <img
+            src="public/inside4.jpg"
+            alt="Laundry Pickup Service"
+            className="w-full h-full object-cover"
+          />
 
-          <p className="text-base sm:text-lg text-slate-500 font-medium mb-10 sm:mb-14 max-w-md">
-            Talk to a real person instantly — quick help, no waiting.
-          </p>
+          {/* Soft Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-purple-700/20 to-transparent" />
 
-          <div className="space-y-6 sm:space-y-7">
-            {/* WhatsApp */}
-            <div className="group flex items-center gap-5 sm:gap-6 p-6 sm:p-7 bg-green-50 border border-green-100 rounded-[28px] sm:rounded-[32px]
-              hover:bg-green-100 transition-all cursor-pointer hover:-translate-y-1">
-              <div className="bg-green-500 p-4 rounded-2xl text-white shadow-lg
-                group-hover:scale-110 transition-transform">
-                <MessageCircle size={28} />
-              </div>
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Chat on WhatsApp
-                </h4>
-                <p className="text-green-700 font-medium text-sm sm:text-base">
-                  Fast replies • Easy booking
-                </p>
-              </div>
-            </div>
-
-            {/* Call */}
-            <div className="group flex items-center gap-5 sm:gap-6 p-6 sm:p-7 bg-purple-50 border border-purple-100 rounded-[28px] sm:rounded-[32px]
-              hover:bg-purple-100 transition-all cursor-pointer hover:-translate-y-1">
-              <div className="bg-purple-600 p-4 rounded-2xl text-white shadow-lg
-                group-hover:scale-110 transition-transform">
-                <Phone size={28} />
-              </div>
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Call Us Directly
-                </h4>
-                <p className="text-purple-700 font-medium text-sm sm:text-base">
-                  +91 99942 64467
-                </p>
-              </div>
-            </div>
-
-            {/* Store */}
-            <div className="group flex items-start gap-5 sm:gap-6 p-6 sm:p-7 bg-slate-50 border border-slate-100 rounded-[28px] sm:rounded-[32px]
-              hover:bg-slate-100 transition-all">
-              <div className="bg-cyan-500 p-4 rounded-2xl text-white shadow-lg
-                group-hover:scale-110 transition-transform">
-                <MapPin size={28} />
-              </div>
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Visit Our Store
-                </h4>
-                <p className="text-slate-600 font-medium leading-relaxed mt-1 text-sm sm:text-base">
-                  31/15, IAF Rd, Vinoba Nagar,<br />
-                  East Tambaram, Chennai – 600059
-                </p>
-
-                <button
-                  type="button"
-                  className="mt-3 text-purple-700 font-bold flex items-center gap-1
-                  hover:gap-3 transition-all text-sm sm:text-base"
-                >
-                  Get Directions →
-                </button>
-              </div>
-            </div>
+          {/* Optional Text Overlay */}
+          <div className="absolute bottom-6 left-6 right-6 text-white">
+            <h3 className="text-xl sm:text-2xl font-extrabold">
+              Fresh Clothes. Zero Effort.
+            </h3>
+            <p className="text-sm sm:text-base text-white/90 mt-1 max-w-sm">
+              Doorstep pickup • Professional care • On-time delivery
+            </p>
           </div>
         </div>
       </div>
