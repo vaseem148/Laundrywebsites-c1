@@ -39,9 +39,9 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="relative bg-slate-950 py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section id="process"className="relative bg-slate-950 py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Glow background */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/30 blur-[160px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] sm:w-[600px] h-[520px] sm:h-[600px] bg-purple-600/30 blur-[160px]" />
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
@@ -51,23 +51,23 @@ const ProcessSection = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
           <span className="inline-block mb-4 text-xs tracking-widest uppercase bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text">
             How We Work
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Our Smart Laundry Process
           </h2>
 
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
             AI-inspired workflow designed for hygiene, fabric care, and perfection.
           </p>
         </motion.div>
 
         {/* Steps */}
-        <div className="space-y-24">
+        <div className="space-y-20 sm:space-y-24">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -78,7 +78,7 @@ const ProcessSection = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              } items-center gap-14`}
+              } items-center gap-10 sm:gap-14`}
             >
               {/* Image */}
               <div className="w-full lg:w-1/2 relative">
@@ -86,26 +86,25 @@ const ProcessSection = () => {
                   <img
                     src={step.image}
                     alt={step.title}
-                    className="w-full h-[300px] md:h-[380px] object-cover scale-100 group-hover:scale-105 transition duration-700"
+                    loading="lazy"
+                    className="w-full h-[260px] sm:h-[300px] md:h-[380px] object-cover scale-100 group-hover:scale-105 transition duration-700"
                   />
-                  {/* ❌ color overlay removed */}
                 </div>
               </div>
 
               {/* Content */}
               <div className="w-full lg:w-1/2">
-                <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-10 shadow-[0_0_40px_rgba(168,85,247,0.15)] hover:shadow-[0_0_60px_rgba(34,211,238,0.25)] transition">
-                  
+                <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_0_40px_rgba(168,85,247,0.15)] hover:shadow-[0_0_60px_rgba(34,211,238,0.25)] transition">
                   {/* Step number */}
-                  <div className="absolute -top-6 -left-6 w-14 h-14 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-900 font-bold flex items-center justify-center text-lg shadow-lg">
+                  <div className="absolute -top-5 -left-5 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-900 font-bold flex items-center justify-center text-base sm:text-lg shadow-lg">
                     {step.id}
                   </div>
 
-                  <h3 className="text-2xl font-semibold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">
                     {step.title}
                   </h3>
 
-                  <p className="text-slate-300 leading-relaxed">
+                  <p className="text-slate-300 leading-relaxed text-sm sm:text-base">
                     {step.desc}
                   </p>
 

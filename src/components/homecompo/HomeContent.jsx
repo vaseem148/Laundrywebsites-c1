@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -40,43 +40,51 @@ const floatSlow = {
 export default function HeroSection() {
   const bgIcons = [Shirt, Sparkles, Footprints, Wind, Home];
 
+  const floatingIcons = useMemo(
+    () =>
+      Array.from({ length: 28 }).map((_, i) => ({
+        id: i,
+        Icon: bgIcons[i % bgIcons.length],
+        left: `${(i * 37) % 100}%`,
+        top: `${(i * 53) % 100}%`,
+        size: 42 + (i % 28),
+        duration: 18 + (i % 10),
+      })),
+    [bgIcons]
+  );
+
   return (
     <motion.section
+    id="home"
       variants={container}
       initial="hidden"
       animate="show"
-      className="relative min-h-screen bg-[#241C3A] flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden"
+      className="relative min-h-screen min-h-[100svh] bg-[#241C3A] flex flex-col items-center justify-center text-center px-4 sm:px-6 py-24 overflow-hidden"
     >
       {/* ---------- DARK OVERLAY ---------- */}
       <div className="absolute inset-0 bg-black/20 z-0" />
 
-      {/* ---------- MORE FLOATING BACKGROUND ICONS ---------- */}
+      {/* ---------- FLOATING BACKGROUND ICONS ---------- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(28)].map((_, i) => {
-          const Icon = bgIcons[i % bgIcons.length];
-          return (
-            <motion.div
-              key={i}
-              className="absolute text-white/15"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -45, 0],
-                x: [0, 25, -25, 0],
-                rotate: [0, 30, -30, 0],
-              }}
-              transition={{
-                duration: 16 + Math.random() * 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <Icon size={48 + Math.random() * 30} />
-            </motion.div>
-          );
-        })}
+        {floatingIcons.map((item) => (
+          <motion.div
+            key={item.id}
+            className="absolute text-white/15"
+            style={{ left: item.left, top: item.top }}
+            animate={{
+              y: [0, -45, 0],
+              x: [0, 25, -25, 0],
+              rotate: [0, 30, -30, 0],
+            }}
+            transition={{
+              duration: item.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <item.Icon size={item.size} />
+          </motion.div>
+        ))}
       </div>
 
       {/* ---------- SOFT GLOW ---------- */}
@@ -105,10 +113,10 @@ export default function HeroSection() {
       {/* ---------- OFFER BADGE ---------- */}
       <motion.div
         variants={itemUp}
-        className="z-10 inline-flex items-center gap-3 bg-white px-6 py-2 rounded-full mb-10 shadow-xl"
+        className="z-10 inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full mb-10 shadow-xl"
       >
         <Sparkles className="text-[#241C3A] w-4 h-4" />
-        <p className="text-[11px] font-black text-black uppercase tracking-widest">
+        <p className="text-[11px] font-black uppercase tracking-widest text-black">
           First Order — <span className="text-[#241C3A]">₹7 / KG</span>
         </p>
         <span className="bg-[#241C3A] text-[10px] font-black px-2 py-0.5 rounded-full text-white">
@@ -119,7 +127,7 @@ export default function HeroSection() {
       {/* ---------- HEADING ---------- */}
       <motion.h1
         variants={itemUp}
-        className="z-10 text-5xl sm:text-6xl md:text-7xl lg:text-[96px] font-black leading-[0.95] tracking-tight mb-8 text-white"
+        className="z-10 text-[42px] sm:text-6xl md:text-7xl lg:text-[96px] font-black leading-[0.95] tracking-tight mb-8 text-white"
         style={{ textShadow: "0 6px 30px rgba(0,0,0,0.8)" }}
       >
         Clean Clothes.
@@ -132,7 +140,7 @@ export default function HeroSection() {
       {/* ---------- DESCRIPTION ---------- */}
       <motion.p
         variants={itemUp}
-        className="z-10 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white mb-12 leading-relaxed"
+        className="z-10 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl text-white mb-12 leading-relaxed px-2"
         style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}
       >
         Professional laundry, dry cleaning & ironing services with pickup & drop.
@@ -142,12 +150,12 @@ export default function HeroSection() {
       {/* ---------- CTA ---------- */}
       <motion.div
         variants={itemUp}
-        className="z-10 flex flex-col sm:flex-row gap-6 mb-20"
+        className="z-10 flex flex-col sm:flex-row gap-5 mb-20 w-full sm:w-auto"
       >
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#6A5ACD] text-white px-10 py-5 rounded-3xl font-black text-lg md:text-xl flex items-center gap-3 shadow-2xl"
+          className="bg-[#6A5ACD] text-white px-8 sm:px-10 py-5 rounded-3xl font-black text-base sm:text-lg md:text-xl flex items-center justify-center gap-3 shadow-2xl w-full sm:w-auto"
         >
           Order Now <ArrowRight />
         </motion.button>
@@ -155,7 +163,7 @@ export default function HeroSection() {
         <motion.button
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="border border-white bg-white/10 backdrop-blur-xl px-10 py-5 rounded-3xl font-black text-lg md:text-xl text-white flex items-center gap-3"
+          className="border border-white bg-white/10 backdrop-blur-xl px-8 sm:px-10 py-5 rounded-3xl font-black text-base sm:text-lg md:text-xl text-white flex items-center justify-center gap-3 w-full sm:w-auto"
         >
           <Phone /> Call Now
         </motion.button>
@@ -164,7 +172,7 @@ export default function HeroSection() {
       {/* ---------- SERVICES ---------- */}
       <motion.div
         variants={itemUp}
-        className="z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-6xl w-full"
+        className="z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 max-w-6xl w-full"
       >
         {[
           { name: "Laundry", icon: <Shirt /> },
@@ -174,10 +182,10 @@ export default function HeroSection() {
           { name: "Home Cleaning", icon: <Home /> },
         ].map((item, i) => (
           <div key={i} className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-[28px] flex items-center justify-center text-white mb-3 shadow-xl">
-              {React.cloneElement(item.icon, { size: 30 })}
+            <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/10 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] flex items-center justify-center text-white mb-3 shadow-xl">
+              {React.cloneElement(item.icon, { size: 28 })}
             </div>
-            <p className="text-[11px] font-black uppercase tracking-widest text-white">
+            <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white text-center">
               {item.name}
             </p>
           </div>

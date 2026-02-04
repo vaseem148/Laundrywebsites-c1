@@ -6,3 +6,7 @@
 html, body {
   scroll-behavior: smooth;
 }
+
+body {
+  overscroll-behavior: none;
+}

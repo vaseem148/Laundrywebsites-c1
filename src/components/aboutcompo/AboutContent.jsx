@@ -61,24 +61,25 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="min-h-screen bg-white px-6 md:px-12 lg:px-24 py-24">
+    <section id="about"className="min-h-screen bg-white px-4 sm:px-6 md:px-12 lg:px-24 py-24">
       {/* HEADER */}
-      <div className="max-w-4xl mx-auto text-center mb-24">
+      <div className="max-w-4xl mx-auto text-center mb-20 sm:mb-24">
         <span className="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-5 py-2 rounded-full mb-8">
           About Us
         </span>
 
         <h2 className="text-4xl md:text-6xl font-extrabold mb-6">
-          Your Trusted <span className="text-purple-700">Laundry Partner</span>
+          Your Trusted{" "}
+          <span className="text-purple-700">Laundry Partner</span>
         </h2>
 
-        <p className="text-lg md:text-xl text-slate-600">
+        <p className="text-base sm:text-lg md:text-xl text-slate-600">
           Fresh, hygienic and perfectly pressed clothes with expert care.
         </p>
       </div>
 
       {/* CARDS */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-32">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-28">
         {features.map((item, index) => {
           const isActive = activeCard === index;
           const Icon = item.icon;
@@ -88,14 +89,10 @@ const AboutSection = () => {
               key={index}
               onClick={() => setActiveCard(isActive ? null : index)}
               className={`
-                relative rounded-3xl p-[2px] cursor-pointer
+                group relative rounded-3xl p-[2px] cursor-pointer
                 transition-all duration-500
                 hover:-translate-y-3 hover:scale-[1.05]
-                ${
-                  isActive
-                    ? "animate-border bg-[length:300%_300%]"
-                    : "bg-slate-200"
-                }
+                ${isActive ? "animate-border" : "bg-slate-200"}
               `}
             >
               {/* ANIMATED BORDER */}
@@ -111,7 +108,7 @@ const AboutSection = () => {
               {/* CARD */}
               <div
                 className={`
-                  relative z-10 rounded-3xl p-10 h-full
+                  relative z-10 rounded-3xl p-8 sm:p-10 h-full
                   bg-white/90 backdrop-blur-xl
                   transition-all duration-500
                   ${
@@ -155,8 +152,8 @@ const AboutSection = () => {
       </div>
 
       {/* STATS */}
-      <div className="max-w-7xl mx-auto rounded-[40px] border-[3px] border-purple-400 bg-gradient-to-br from-[#faf7ff] to-[#f4f1ff] px-10 py-16 flex flex-col lg:flex-row items-center justify-between gap-16 shadow-xl">
-        <div>
+      <div className="max-w-7xl mx-auto rounded-[40px] border-[3px] border-purple-400 bg-gradient-to-br from-[#faf7ff] to-[#f4f1ff] px-8 sm:px-10 py-14 sm:py-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-xl">
+        <div className="text-center lg:text-left">
           <h3 className="text-3xl font-extrabold mb-2">
             Serving Chennai with Pride
           </h3>
@@ -165,7 +162,7 @@ const AboutSection = () => {
           </p>
         </div>
 
-        <div className="flex gap-16">
+        <div className="flex flex-wrap justify-center gap-12 sm:gap-16">
           <Stat value="1000+" label="Customers" />
           <Stat value="5+" label="Years" />
           <Stat value="4.9★" label="Rating" />
@@ -173,7 +170,7 @@ const AboutSection = () => {
       </div>
 
       {/* ANIMATIONS */}
-      <style jsx>{`
+      <style>{`
         @keyframes borderMove {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
@@ -210,7 +207,7 @@ const AboutSection = () => {
 
 const Stat = ({ value, label }) => (
   <div className="text-center">
-    <p className="text-5xl font-black text-purple-700">{value}</p>
+    <p className="text-4xl sm:text-5xl font-black text-purple-700">{value}</p>
     <p className="mt-2 text-sm uppercase tracking-widest text-slate-500">
       {label}
     </p>

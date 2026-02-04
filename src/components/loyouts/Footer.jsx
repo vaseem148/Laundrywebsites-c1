@@ -11,10 +11,8 @@ import {
 export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-[#12061f] via-[#1a0b2e] to-[#12061f] text-white">
-
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-4 gap-14">
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 sm:gap-14">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
@@ -46,11 +44,11 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-5">Quick Links</h4>
           <ul className="space-y-3 text-sm text-white/75">
-            <li><a href="#" className="hover:text-white">Home</a></li>
-            <li><a href="#" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Services</a></li>
-            <li><a href="#" className="hover:text-white">Pricing</a></li>
-            <li><a href="#" className="hover:text-white">Contact</a></li>
+            <li><a href="#" className="hover:text-white transition">Home</a></li>
+            <li><a href="#" className="hover:text-white transition">About Us</a></li>
+            <li><a href="#" className="hover:text-white transition">Services</a></li>
+            <li><a href="#" className="hover:text-white transition">Pricing</a></li>
+            <li><a href="#" className="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
 
@@ -69,21 +67,24 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <h4 className="font-semibold mb-5">Contact</h4>
-
           <ul className="space-y-4 text-sm text-white/75">
             <li className="flex items-center gap-3">
               <Phone size={16} className="text-purple-400" />
-              +91 99942 64467
+              <span className="break-all sm:break-normal">
+                +91 99942 64467
+              </span>
             </li>
 
             <li className="flex items-center gap-3">
               <Mail size={16} className="text-purple-400" />
-              info@divinelaundry.in
+              <span className="break-all">
+                info@divinelaundry.in
+              </span>
             </li>
 
             <li className="flex items-start gap-3">
               <MapPin size={16} className="text-purple-400 mt-1" />
-              <span>
+              <span className="leading-relaxed">
                 31/15, IAF Rd, Vinoba Nagar,<br />
                 East Tambaram, Chennai – 600059
               </span>
@@ -96,21 +97,34 @@ export default function Footer() {
       <div className="border-t border-white/10" />
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/60 gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/60 gap-4 text-center md:text-left">
         <p>© 2026 Divine Laundry. All rights reserved.</p>
 
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-white">Privacy Policy</a>
-          <a href="#" className="hover:text-white">Terms of Service</a>
+          <a href="#" className="hover:text-white transition">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:text-white transition">
+            Terms of Service
+          </a>
         </div>
       </div>
 
       {/* Floating Buttons */}
-      <div className="fixed right-6 bottom-6 flex flex-col gap-3 z-50">
-        <button className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:scale-105 transition">
+      <div className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 flex flex-col gap-3 z-50">
+        <button
+          type="button"
+          aria-label="WhatsApp"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:scale-105 transition"
+        >
           <MessageCircle className="text-white" />
         </button>
-        <button className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-lg hover:scale-105 transition">
+
+        <button
+          type="button"
+          aria-label="Call"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-lg hover:scale-105 transition"
+        >
           <Phone className="text-white" />
         </button>
       </div>

@@ -3,26 +3,25 @@ import { MessageCircle, Phone, MapPin, Send } from "lucide-react";
 
 const BookingSection = () => {
   return (
-    <section className="min-h-screen bg-white py-24 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+    <section id="booking" className="min-h-screen min-h-[100svh] bg-white py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
         {/* LEFT — Booking Form */}
-        <div className="bg-white border border-slate-100 rounded-[42px] p-8 md:p-12 shadow-[0_40px_100px_-30px_rgba(124,43,217,0.15)]">
-          
+        <div className="bg-white border border-slate-100 rounded-[32px] sm:rounded-[42px] p-6 sm:p-8 md:p-12 shadow-[0_40px_100px_-30px_rgba(124,43,217,0.15)]">
           <span className="inline-block bg-purple-100 text-purple-700 text-xs font-semibold px-5 py-2 rounded-full uppercase tracking-wider mb-6">
             Book Now
           </span>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
             Schedule Your Pickup
           </h2>
 
-          <p className="text-slate-500 font-medium mb-12 max-w-md">
-            Fill in your details and we’ll take care of the rest — fast, easy & reliable.
+          <p className="text-slate-500 font-medium mb-10 sm:mb-12 max-w-md text-sm sm:text-base">
+            Fill in your details and we’ll take care of the rest — fast, easy &
+            reliable.
           </p>
 
-          <form className="space-y-7">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form className="space-y-6 sm:space-y-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {/* Name */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
@@ -31,7 +30,7 @@ const BookingSection = () => {
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="w-full px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
+                  className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
                   focus:ring-2 focus:ring-purple-600 outline-none transition-all"
                 />
               </div>
@@ -42,9 +41,9 @@ const BookingSection = () => {
                   Phone Number
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   placeholder="+91 99942 64467"
-                  className="w-full px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
+                  className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
                   focus:ring-2 focus:ring-purple-600 outline-none transition-all"
                 />
               </div>
@@ -56,7 +55,7 @@ const BookingSection = () => {
                 Service Type
               </label>
               <select
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
+                className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium
                 focus:ring-2 focus:ring-purple-600 outline-none cursor-pointer"
               >
                 <option>Select a service</option>
@@ -72,18 +71,19 @@ const BookingSection = () => {
                 Pickup Address
               </label>
               <textarea
-                rows="4"
+                rows={4}
                 placeholder="Enter your complete address for pickup"
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium resize-none
+                className="w-full px-5 sm:px-6 py-4 rounded-2xl bg-slate-50 text-slate-900 font-medium resize-none
                 focus:ring-2 focus:ring-purple-600 outline-none transition-all"
               />
             </div>
 
             {/* CTA */}
             <button
+              type="button"
               className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white
-              font-bold py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(124,43,217,0.4)]
-              transition-all flex items-center justify-center gap-3 text-lg hover:scale-[1.02]"
+              font-bold py-4 sm:py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(124,43,217,0.4)]
+              transition-all flex items-center justify-center gap-3 text-base sm:text-lg hover:scale-[1.02]"
             >
               Book Pickup Now <Send size={20} />
             </button>
@@ -92,76 +92,76 @@ const BookingSection = () => {
 
         {/* RIGHT — Contact Options */}
         <div className="lg:pt-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
             Prefer to Call or Chat?
           </h2>
 
-          <p className="text-lg text-slate-500 font-medium mb-14 max-w-md">
+          <p className="text-base sm:text-lg text-slate-500 font-medium mb-10 sm:mb-14 max-w-md">
             Talk to a real person instantly — quick help, no waiting.
           </p>
 
-          <div className="space-y-7">
-
+          <div className="space-y-6 sm:space-y-7">
             {/* WhatsApp */}
-            <div className="group flex items-center gap-6 p-7 bg-green-50 border border-green-100 rounded-[32px]
+            <div className="group flex items-center gap-5 sm:gap-6 p-6 sm:p-7 bg-green-50 border border-green-100 rounded-[28px] sm:rounded-[32px]
               hover:bg-green-100 transition-all cursor-pointer hover:-translate-y-1">
               <div className="bg-green-500 p-4 rounded-2xl text-white shadow-lg
                 group-hover:scale-110 transition-transform">
-                <MessageCircle size={30} />
+                <MessageCircle size={28} />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900">
+                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
                   Chat on WhatsApp
                 </h4>
-                <p className="text-green-700 font-medium">
+                <p className="text-green-700 font-medium text-sm sm:text-base">
                   Fast replies • Easy booking
                 </p>
               </div>
             </div>
 
             {/* Call */}
-            <div className="group flex items-center gap-6 p-7 bg-purple-50 border border-purple-100 rounded-[32px]
+            <div className="group flex items-center gap-5 sm:gap-6 p-6 sm:p-7 bg-purple-50 border border-purple-100 rounded-[28px] sm:rounded-[32px]
               hover:bg-purple-100 transition-all cursor-pointer hover:-translate-y-1">
               <div className="bg-purple-600 p-4 rounded-2xl text-white shadow-lg
                 group-hover:scale-110 transition-transform">
-                <Phone size={30} />
+                <Phone size={28} />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900">
+                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
                   Call Us Directly
                 </h4>
-                <p className="text-purple-700 font-medium">
+                <p className="text-purple-700 font-medium text-sm sm:text-base">
                   +91 99942 64467
                 </p>
               </div>
             </div>
 
             {/* Store */}
-            <div className="group flex items-start gap-6 p-7 bg-slate-50 border border-slate-100 rounded-[32px]
+            <div className="group flex items-start gap-5 sm:gap-6 p-6 sm:p-7 bg-slate-50 border border-slate-100 rounded-[28px] sm:rounded-[32px]
               hover:bg-slate-100 transition-all">
               <div className="bg-cyan-500 p-4 rounded-2xl text-white shadow-lg
                 group-hover:scale-110 transition-transform">
-                <MapPin size={30} />
+                <MapPin size={28} />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-slate-900">
+                <h4 className="text-lg sm:text-xl font-bold text-slate-900">
                   Visit Our Store
                 </h4>
-                <p className="text-slate-600 font-medium leading-relaxed mt-1">
+                <p className="text-slate-600 font-medium leading-relaxed mt-1 text-sm sm:text-base">
                   31/15, IAF Rd, Vinoba Nagar,<br />
                   East Tambaram, Chennai – 600059
                 </p>
 
-                <button className="mt-3 text-purple-700 font-bold flex items-center gap-1
-                  hover:gap-3 transition-all">
+                <button
+                  type="button"
+                  className="mt-3 text-purple-700 font-bold flex items-center gap-1
+                  hover:gap-3 transition-all text-sm sm:text-base"
+                >
                   Get Directions →
                 </button>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );
